@@ -6,7 +6,7 @@ const Frame = (): JSX.Element => {
   };
   return (
     <>
-      <div className="navbar bg-base-100 sticky top-0 z-50">
+      <div className="navbar bg-base-100 sticky top-0 z-50 p-0">
         <div className="flex-none">
           <label htmlFor="hooks-list-drawer" className="btn btn-square btn-ghost drawer-button">
             <svg
