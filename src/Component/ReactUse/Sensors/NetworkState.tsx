@@ -1,6 +1,9 @@
+import { useNetworkState } from "react-use";
+
 const NetworkState = (): JSX.Element => {
+  const state = useNetworkState();
   return (
-    <div className="card w-96 bg-base-100 shadow-lg m-4">
+    <div className="card w-96 bg-base-300 shadow-lg m-4">
       <div className="card-body">
         <h2 className="card-title">useNetworkState</h2>
         <p>
@@ -8,6 +11,12 @@ const NetworkState = (): JSX.Element => {
           <br />
           規格上、ブラウザがインターネットに接続されていることは保証されず、ネットワーク接続のみが保証されている
         </p>
+        <div className="mockup-code">
+          <pre>
+            <code>{JSON.stringify(state, null, 2)}</code>
+          </pre>
+        </div>
+
         <div className="card-actions justify-end">
           <a
             role="button"
