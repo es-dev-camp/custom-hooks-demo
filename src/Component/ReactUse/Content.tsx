@@ -71,7 +71,7 @@ const Content = (): JSX.Element => {
     <div className="flex flex-row flex-wrap items-start justify-start">
       {contents.map(content => {
         return (
-          <CardFrame feature={content.name} children={content.body} />
+          <CardFrame key={content.name} feature={content.name} children={content.body} />
         )
       })}
     </div>
