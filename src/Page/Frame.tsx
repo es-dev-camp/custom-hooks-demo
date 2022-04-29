@@ -6,7 +6,7 @@ const Frame = (): JSX.Element => {
   };
   return (
     <>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 sticky top-0 z-50">
         <div className="flex-none">
           <label htmlFor="hooks-list-drawer" className="btn btn-square btn-ghost drawer-button">
             <svg
@@ -45,7 +45,7 @@ const Frame = (): JSX.Element => {
           </button>
         </div>
       </div>
-      <div className="drawer drawer-mobile">
+      <div className="drawer drawer-mobile h-full">
         <input id="hooks-list-drawer" type="checkbox" className="drawer-toggle" />
         <div className="drawer-side">
           <label htmlFor="hooks-list-drawer" className="drawer-overlay"></label>
