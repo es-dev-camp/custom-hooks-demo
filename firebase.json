@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "site": "custom-hooks-demo-dfcc4",
+      "public": "dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
