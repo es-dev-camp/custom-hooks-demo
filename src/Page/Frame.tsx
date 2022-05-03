@@ -2,13 +2,16 @@ import Content from "../Component/ReactUse/Content";
 
 const Frame = (): JSX.Element => {
   const onClickMenu = () => {
-    console.log('onClickMenu => Empty command');
+    console.log("onClickMenu => Empty command");
   };
   return (
     <>
-      <div className="navbar bg-base-100 sticky top-0 z-50 p-0">
+      <nav className="navbar fixed bg-base-100 top-0 z-50 p-0">
         <div className="flex-none">
-          <label htmlFor="hooks-list-drawer" className="btn btn-square btn-ghost drawer-button">
+          <label
+            htmlFor="hooks-list-drawer"
+            className="btn btn-square btn-ghost drawer-button"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -44,14 +47,18 @@ const Frame = (): JSX.Element => {
             </svg>
           </button>
         </div>
-      </div>
-      <div className="drawer drawer-mobile h-full">
-        <input id="hooks-list-drawer" type="checkbox" className="drawer-toggle" />
+      </nav>
+      <div className="drawer drawer-mobile p-2 pt-16">
+        <input
+          id="hooks-list-drawer"
+          type="checkbox"
+          className="drawer-toggle"
+        />
         <div className="drawer-side">
-          <label htmlFor="hooks-list-drawer" className="drawer-overlay"></label>
-          <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+          <label htmlFor="hooks-list-drawer" className="drawer-overlay" />
+          <ul className="menu px-2 overflow-y-auto w-80 bg-base-100 text-base-content">
             {/* Sidebar content here */}
-            <li className="bg-primary">
+            <li className="text-xl font-medium bg-primary rounded-lg">
               <a>react-use</a>
             </li>
           </ul>
