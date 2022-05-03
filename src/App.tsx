@@ -1,6 +1,11 @@
-import './App.css';
-import Frame from './Page/Frame';
+import { useRoutes } from "react-router-dom";
 
-const App = (): JSX.Element => <Frame />;
+import "./App.css";
+import routes from "./Routes";
+
+const App = (): JSX.Element => {
+  const routing = useRoutes(routes);
+  return <>{routing}</>;
+};
 
 export default App;
