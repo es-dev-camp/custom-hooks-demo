@@ -9,6 +9,7 @@
     "deploy": "pnpm build && firebase deploy --only hosting:custom-hooks-demo-dfcc4"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-use": "^17.3.2"
