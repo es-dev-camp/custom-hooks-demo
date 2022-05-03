@@ -5,7 +5,7 @@ type CardFrameProps = {
 
 const CardFrame = ({ feature, children }: CardFrameProps): JSX.Element => {
   return (
-    <div className="card w-96 bg-base-300 shadow-lg m-4">
+    <div className="card w-96 bg-base-300 shadow-lg mr-2 mb-2">
       <div className="card-body">
         <h2 className="card-title">{feature}</h2>
         {children()}
