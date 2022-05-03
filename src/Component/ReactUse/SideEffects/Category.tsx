@@ -29,10 +29,10 @@ const StarWarsPersonDataUrl = "https://swapi.dev/api/people/1/";
 
 const Category = (): JSX.Element => {
   const title = "Side-effects";
-  const [toggle, setToggle] = useToggle(true);
+  const [toggle, setToggle] = useToggle(false);
   const contents: ContentType[] = [
     { name: "useAsync", body: () => Async({ url: StarWarsPersonDataUrl }) },
-    { name: "useAsyncFn", body: () => <AsyncFn url={StarWarsPersonDataUrl} /> },
+    { name: "useAsyncFn", body: () => AsyncFn({ url: StarWarsPersonDataUrl }) },
     {
       name: "useAsyncRetry",
       body: () => <AsyncRetry url={StarWarsPersonDataUrl} />,
@@ -47,8 +47,8 @@ const Category = (): JSX.Element => {
     { name: "useLockBodyScroll", body: LockBodyScroll },
     { name: "useRafLoop", body: RafLoop },
     { name: "useSessionStorage", body: SessionStorage },
-    { name: "useThrottle", body: () => <Throttle value={100} /> },
-    { name: "useThrottleFn", body: () => <ThrottleFn value={100} /> },
+    { name: "useThrottle", body: () => Throttle({ value: 100 }) },
+    { name: "useThrottleFn", body: () => ThrottleFn({ value: 100 }) },
     { name: "useTitle", body: Title },
     { name: "usePermission", body: Permission },
   ];
