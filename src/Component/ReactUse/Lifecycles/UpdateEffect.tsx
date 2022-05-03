@@ -20,7 +20,7 @@ const UpdateEffect = () => {
     }
 
     return () => {
-      setCount(0);
+      // do something on unmount
     };
   }, [count]);
 
