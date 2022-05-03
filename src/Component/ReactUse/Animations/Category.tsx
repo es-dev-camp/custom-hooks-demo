@@ -17,7 +17,8 @@ type ContentType = {
 };
 
 const Category = (): JSX.Element => {
-  const [toggle, setToggle] = useToggle(true);
+  const title = "Animations";
+  const [toggle, setToggle] = useToggle(false);
   const contents: ContentType[] = [
     { name: "useRaf", body: Raf },
     { name: "useInterval", body: Interval },
@@ -30,14 +31,19 @@ const Category = (): JSX.Element => {
   ];
   return (
     <div tabIndex={0} className="collapse collapse-arrow">
-      <input type="checkbox" checked={toggle} onClick={setToggle} />
-      <div className="collapse-title text-xl font-medium">Animations</div>
+      <input
+        type="checkbox"
+        checked={toggle}
+        onClick={setToggle}
+        onChange={() => console.log(`Changed ${title} collapse`)}
+      />
+      <div className="collapse-title text-xl font-medium">{title}</div>
       <div className="collapse-content">
         <div className="flex flex-row flex-wrap items-start justify-start">
-          {contents.map((content) => {
+          {contents.map((content, index) => {
             return (
               <CardFrame
-                key={content.name}
+                key={index}
                 feature={content.name}
                 children={content.body}
               />
