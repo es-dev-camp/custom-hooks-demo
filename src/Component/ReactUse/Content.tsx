@@ -2,6 +2,7 @@ import Sensors from "./Sensors/Category";
 import UI from "./UI/Category";
 import Animations from "./Animations/Category";
 import SideEffects from "./SideEffects/Category";
+import Lifecycles from "./Lifecycles/Category";
 
 const Content = (): JSX.Element => {
   return (
@@ -10,6 +11,7 @@ const Content = (): JSX.Element => {
       <UI />
       <Animations />
       <SideEffects />
+      <Lifecycles />
     </>
   );
 };
