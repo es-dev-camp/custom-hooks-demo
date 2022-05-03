@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
+import { ReactComponent as HamburgerMenu } from "../../Assets/Images/HamburgerMenu.svg";
+import { ReactComponent as MeatballMenu } from "../../Assets/Images/MeatballMenu.svg";
+
 const Navbar = (): JSX.Element => {
   const navigate = useNavigate();
   const onClickMenu = () => {
@@ -13,19 +16,7 @@ const Navbar = (): JSX.Element => {
           htmlFor="hooks-list-drawer"
           className="btn btn-square btn-ghost drawer-button"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            className="inline-block w-5 h-5 stroke-current"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
+          <HamburgerMenu className="inline-block w-5 h-5 stroke-current" />
         </label>
       </div>
       <div className="flex-1">
@@ -38,19 +29,7 @@ const Navbar = (): JSX.Element => {
       </div>
       <div className="flex-none">
         <button className="btn btn-square btn-ghost" onClick={onClickMenu}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            className="inline-block w-5 h-5 stroke-current"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-            ></path>
-          </svg>
+          <MeatballMenu className="inline-block w-5 h-5 stroke-current" />
         </button>
       </div>
     </nav>
