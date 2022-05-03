@@ -2,12 +2,13 @@ import { useVideo } from "react-use";
 
 const Video = () => {
   const [video, state, controls, ref] = useVideo(
-    <video src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" />
+    <video src="https://player.vimeo.com/progressive_redirect/playback/696349232/rendition/360p?loc=external&oauth2_token_id=1027659655&signature=405ffb945893ad5f05c543d7665ded03ae2dba2a8b8851ecbb309f63803ad85a" />
   );
 
   return (
     <div>
       {video}
+      https://pixabay.com/ja/videos/
       <pre>{JSON.stringify(state, null, 2)}</pre>
       <button
         className="btn btn-xs btn-outline btn-info"

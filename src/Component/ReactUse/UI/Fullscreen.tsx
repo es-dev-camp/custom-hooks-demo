@@ -11,7 +11,7 @@ const Fullscreen = () => {
   const [video, state, controls] = useVideo(
     <video
       className="w-full"
-      src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+      src="https://player.vimeo.com/external/553838564.hd.mp4?s=117a06800094ff392923eab620ef661199418ede&profile_id=174"
     />
   );
 
@@ -45,7 +45,6 @@ const Fullscreen = () => {
           </button>
         </>
       )}
-
       {video}
     </div>
   );
