@@ -6,13 +6,13 @@ import Lifecycles from "../Components/ReactUse/Lifecycles/Category";
 
 const ReactUsePage = (): JSX.Element => {
   return (
-    <>
+    <div className="h-full">
       <Sensors />
       <UI />
       <Animations />
       <SideEffects />
       <Lifecycles />
-    </>
+    </div>
   );
 };
 

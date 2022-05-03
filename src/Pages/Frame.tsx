@@ -6,7 +6,7 @@ import SideMenu from "../Components/Common/SideMenu";
 const Frame = (): JSX.Element => {
 
   return (
-    <>
+    <div className="h-full">
       <Navbar />
       {/* FIXME: Padding で固定値を指定して無理矢理調整しているのでなんとかする */}
       <div className="drawer drawer-mobile p-2 pt-16">
@@ -23,7 +23,7 @@ const Frame = (): JSX.Element => {
           {<Outlet />}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
