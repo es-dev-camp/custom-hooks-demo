@@ -11,7 +11,6 @@ import ErrorDemo from "./Error";
 import Favicon from "./Favicon";
 import LocalStorage from "./LocalStorage";
 import LockBodyScroll from "./LockBodyScroll";
-import Permission from "./Permission";
 import RafLoop from "./RafLoop";
 import SessionStorage from "./SessionStorage";
 import Throttle from "./Throttle";
@@ -42,7 +41,6 @@ const Category = (): JSX.Element => (
       { name: "useThrottle", body: () => Throttle({ value: 100 }) },
       { name: "useThrottleFn", body: () => ThrottleFn({ value: 100 }) },
       { name: "useTitle", body: Title },
-      { name: "usePermission", body: Permission },
     ]}
   />
 );
