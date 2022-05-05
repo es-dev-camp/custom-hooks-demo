@@ -4,6 +4,7 @@ import Animations from "../Components/ReactUse/Animations/Category";
 import SideEffects from "../Components/ReactUse/SideEffects/Category";
 import Lifecycles from "../Components/ReactUse/Lifecycles/Category";
 import State from "../Components/ReactUse/State/Category";
+import Miscellaneous from "../Components/ReactUse/Miscellaneous/Category";
 
 const ReactUsePage = (): JSX.Element => {
   return (
@@ -14,6 +15,7 @@ const ReactUsePage = (): JSX.Element => {
       <SideEffects />
       <Lifecycles />
       <State />
+      <Miscellaneous />
     </div>
   );
 };
