@@ -1,14 +1,21 @@
-import { createBreakpoint } from "react-use";
+import { createMemo } from 'react-use';
 
-const useBreakpoint = createBreakpoint();
-
-const Breakpoint = (): JSX.Element => {
-  const breakpoint = useBreakpoint();
-
-  if (breakpoint === "laptopL") return <div> This is very big Laptop </div>;
-  else if (breakpoint == "laptop") return <div> This is Laptop</div>;
-  else if (breakpoint == "tablet") return <div> This is Tablet</div>;
-  else return <div> Too small!</div>;
+const fibonacci = (n: number): number => {
+  if (n === 0) return 0;
+  if (n === 1) return 1;
+  return fibonacci(n - 1) + fibonacci(n - 2);
 };
 
-export default Breakpoint;
+const useMemoFibonacci = createMemo(fibonacci);
+
+const Memo = () => {
+  const result = useMemoFibonacci(10);
+
+  return (
+    <div>
+      fibonacci(10) = {result}
+    </div>
+  );
+};
+
+export default Memo;

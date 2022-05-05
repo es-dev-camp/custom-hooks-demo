@@ -1,14 +1,16 @@
-import { createBreakpoint } from "react-use";
+import { useStateWithHistory } from 'react-use';
 
-const useBreakpoint = createBreakpoint();
+const StateWithHistory = () => {
+  const [state, setState, stateHistory] = useStateWithHistory({ count: 0 });
+  const onClickGetSet = () => setState({ count: Date.now() });
 
-const Breakpoint = (): JSX.Element => {
-  const breakpoint = useBreakpoint();
-
-  if (breakpoint === "laptopL") return <div> This is very big Laptop </div>;
-  else if (breakpoint == "laptop") return <div> This is Laptop</div>;
-  else if (breakpoint == "tablet") return <div> This is Tablet</div>;
-  else return <div> Too small!</div>;
+  return (
+    <>
+      <button className="btn btn-xs btn-block btn-outline btn-info" onClick={onClickGetSet}>
+        Click Me: {state.count}
+      </button>
+      <pre>{JSON.stringify(stateHistory, null, 2)}</pre>
+    </>
+  );
 };
-
-export default Breakpoint;
+export default StateWithHistory;

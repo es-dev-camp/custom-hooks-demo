@@ -1,14 +1,17 @@
-import { createBreakpoint } from "react-use";
+import { useDefault } from 'react-use';
 
-const useBreakpoint = createBreakpoint();
+const Default = () => {
+  const initialUser = { name: 'Marshall' }
+  const defaultUser = { name: 'Mathers' }
+  const [user, setUser] = useDefault(defaultUser, initialUser);
 
-const Breakpoint = (): JSX.Element => {
-  const breakpoint = useBreakpoint();
-
-  if (breakpoint === "laptopL") return <div> This is very big Laptop </div>;
-  else if (breakpoint == "laptop") return <div> This is Laptop</div>;
-  else if (breakpoint == "tablet") return <div> This is Tablet</div>;
-  else return <div> Too small!</div>;
+  return (
+    <div>
+      <div>User: {user.name}</div>
+      <input onChange={e => setUser({ name: e.target.value })} />
+      <button className="btn btn-xs btn-outline btn-info ml-2" onClick={() => setUser(null)}>set to null</button>
+    </div>
+  );
 };
 
-export default Breakpoint;
+export default Default;

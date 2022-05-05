@@ -16,6 +16,7 @@
     "react-router-dom": "^6.3.0",
     "react-use": "^17.3.2",
     "rebound": "^0.1.0",
+    "rxjs": "^7.5.5",
     "vite-plugin-svgr": "^2.1.0"
   },
   "devDependencies": {

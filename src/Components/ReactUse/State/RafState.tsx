@@ -1,14 +1,27 @@
-import { createBreakpoint } from "react-use";
+import { useRafState, useMount } from 'react-use';
 
-const useBreakpoint = createBreakpoint();
+const RafState = () => {
+  const [state, setState] = useRafState({
+    width: 0,
+    height: 0,
+  });
 
-const Breakpoint = (): JSX.Element => {
-  const breakpoint = useBreakpoint();
+  useMount(() => {
+    const onResize = () => {
+      setState({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
 
-  if (breakpoint === "laptopL") return <div> This is very big Laptop </div>;
-  else if (breakpoint == "laptop") return <div> This is Laptop</div>;
-  else if (breakpoint == "tablet") return <div> This is Tablet</div>;
-  else return <div> Too small!</div>;
+    window.addEventListener('resize', onResize);
+
+    return () => {
+      window.removeEventListener('resize', onResize);
+    };
+  });
+
+  return <pre>{JSON.stringify(state, null, 2)}</pre>;
 };
 
-export default Breakpoint;
+export default RafState;

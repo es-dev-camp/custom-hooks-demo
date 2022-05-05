@@ -1,14 +1,31 @@
-import { createBreakpoint } from "react-use";
+import { useState } from 'react';
+import { useGetSet } from 'react-use';
 
-const useBreakpoint = createBreakpoint();
+const GetSet = () => {
+  const [get, setGetSet] = useGetSet(0);
+  const onClickGetSet = () => {
+    setTimeout(() => {
+      setGetSet(get() + 1)
+    }, 1_000);
+  };
 
-const Breakpoint = (): JSX.Element => {
-  const breakpoint = useBreakpoint();
+  const [count, set] = useState(0);
+  const onClickSetState = () => {
+    setTimeout(() => {
+      set(count + 1)
+    }, 1_000);
+  };
 
-  if (breakpoint === "laptopL") return <div> This is very big Laptop </div>;
-  else if (breakpoint == "laptop") return <div> This is Laptop</div>;
-  else if (breakpoint == "tablet") return <div> This is Tablet</div>;
-  else return <div> Too small!</div>;
+  return (
+    <>
+      <button className="btn btn-xs btn-outline btn-info" onClick={onClickGetSet}>
+        Get Set Clicked(Actual): {get()}
+      </button>
+      <button className="btn btn-xs btn-outline btn-info" onClick={onClickSetState}>
+        useState Clicked(Wrong): {count}
+      </button>
+    </>
+  );
 };
 
-export default Breakpoint;
+export default GetSet;

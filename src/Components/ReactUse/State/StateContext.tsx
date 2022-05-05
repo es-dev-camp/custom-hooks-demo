@@ -1,14 +1,43 @@
-import { createBreakpoint } from "react-use";
+import { createStateContext } from 'react-use';
 
-const useBreakpoint = createBreakpoint();
+const [useSharedText, SharedTextProvider] = createStateContext('');
 
-const Breakpoint = (): JSX.Element => {
-  const breakpoint = useBreakpoint();
-
-  if (breakpoint === "laptopL") return <div> This is very big Laptop </div>;
-  else if (breakpoint == "laptop") return <div> This is Laptop</div>;
-  else if (breakpoint == "tablet") return <div> This is Tablet</div>;
-  else return <div> Too small!</div>;
+const ComponentA = () => {
+  const [text, setText] = useSharedText();
+  return (
+    <div>
+      Component A:
+      <br />
+      <input type="text" value={text} onInput={ev => {
+        // @ts-ignore
+        setText(ev.target.value);
+      }} />
+    </div>
+  );
 };
 
-export default Breakpoint;
+const ComponentB = () => {
+  const [text, setText] = useSharedText();
+  return (
+    <div>
+      Component B:
+      <br />
+      <input type="text" value={text} onInput={ev => {
+        // @ts-ignore
+        setText(ev.target.value);
+      }} />
+    </div>
+  );
+};
+
+const StateContext = () => {
+  return (
+    // @ts-ignore
+    <SharedTextProvider>
+      <p>Those two fields share the same value.</p>
+      <ComponentA />
+      <ComponentB />
+    </SharedTextProvider>
+  );
+};
+export default StateContext;

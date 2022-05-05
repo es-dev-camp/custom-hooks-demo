@@ -1,14 +1,41 @@
-import { createBreakpoint } from "react-use";
+import { useSetState } from 'react-use';
 
-const useBreakpoint = createBreakpoint();
-
-const Breakpoint = (): JSX.Element => {
-  const breakpoint = useBreakpoint();
-
-  if (breakpoint === "laptopL") return <div> This is very big Laptop </div>;
-  else if (breakpoint == "laptop") return <div> This is Laptop</div>;
-  else if (breakpoint == "tablet") return <div> This is Tablet</div>;
-  else return <div> Too small!</div>;
+type SampleState = {
+  hello?: string;
+  foo?: string;
+  count?: number;
 };
 
-export default Breakpoint;
+const SetState = () => {
+  const [state, setState] = useSetState<SampleState>({});
+
+  return (
+    <div>
+      <pre>{JSON.stringify(state, null, 2)}</pre>
+      <button
+        className="btn btn-xs btn-block btn-outline btn-info"
+        onClick={() => setState({ hello: 'world' })}
+      >
+        hello
+      </button>
+      <button
+        className="btn btn-xs btn-block btn-outline btn-info" 
+        onClick={() => setState({ foo: 'bar' })}
+      >
+        foo
+      </button>
+      <button
+        className="btn btn-xs btn-block btn-outline btn-info"
+        onClick={() => {
+          setState((prevState) => ({
+            count: (prevState.count || 0) + 1,
+          }))
+        }}
+      >
+        count
+      </button>
+    </div>
+  );
+};
+
+export default SetState;

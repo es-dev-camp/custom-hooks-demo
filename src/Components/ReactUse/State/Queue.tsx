@@ -1,14 +1,19 @@
-import { createBreakpoint } from "react-use";
+import { useQueue } from 'react-use';
 
-const useBreakpoint = createBreakpoint();
+const QueueDemo = () => {
+  const { add, remove, first, last, size } = useQueue<number>();
 
-const Breakpoint = (): JSX.Element => {
-  const breakpoint = useBreakpoint();
-
-  if (breakpoint === "laptopL") return <div> This is very big Laptop </div>;
-  else if (breakpoint == "laptop") return <div> This is Laptop</div>;
-  else if (breakpoint == "tablet") return <div> This is Tablet</div>;
-  else return <div> Too small!</div>;
+  return (
+    <div>
+      <ul>
+        <li>first: {first}</li>
+        <li>last: {last}</li>
+        <li>size: {size}</li>
+      </ul>
+      <button className="btn btn-xs btn-block btn-outline btn-info" onClick={() => add((last || 0) + 1)}>Add</button>
+      <button className="btn btn-xs btn-block btn-outline btn-info" onClick={() => remove()}>Remove</button>
+    </div>
+  );
 };
 
-export default Breakpoint;
+export default QueueDemo;

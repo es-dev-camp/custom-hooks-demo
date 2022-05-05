@@ -1,14 +1,38 @@
-import { createBreakpoint } from "react-use";
+import { useMap } from 'react-use';
 
-const useBreakpoint = createBreakpoint();
+type SampleType = {
+  hello: string;
+  [key: string]: unknown;
+}
 
-const Breakpoint = (): JSX.Element => {
-  const breakpoint = useBreakpoint();
+const MapDemo = () => {
+  const [map, { set, setAll, remove, reset }] = useMap<SampleType>({
+    hello: 'there',
+  });
 
-  if (breakpoint === "laptopL") return <div> This is very big Laptop </div>;
-  else if (breakpoint == "laptop") return <div> This is Laptop</div>;
-  else if (breakpoint == "tablet") return <div> This is Tablet</div>;
-  else return <div> Too small!</div>;
+  return (
+    <div>
+      <button
+        className="btn btn-xs btn-block btn-outline btn-info"
+        onClick={() => set(String(Date.now()), new Date().toJSON())}
+      >
+        Add
+      </button>
+      <button className="btn btn-xs btn-block btn-outline btn-info" onClick={() => reset()}>
+        Reset
+      </button>
+      <button className="btn btn-xs btn-block btn-outline btn-info" onClick={() => setAll({ hello: 'new', data: 'data' })}>
+        Set new data
+      </button>
+      <button
+        className="btn btn-xs btn-block btn-outline btn-info" 
+        onClick={() => remove('hello')} disabled={!map.hello}
+      >
+        Remove 'hello'
+      </button>
+      <pre>{JSON.stringify(map, null, 2)}</pre>
+    </div>
+  );
 };
 
-export default Breakpoint;
+export default MapDemo;

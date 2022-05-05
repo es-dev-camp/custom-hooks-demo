@@ -1,14 +1,23 @@
-import { createBreakpoint } from "react-use";
+import { useState } from 'react';
+import { useLatest } from 'react-use';
 
-const useBreakpoint = createBreakpoint();
+const Latest = () => {
+  const [count, setCount] = useState(0);
+  const latestCount = useLatest(count);
 
-const Breakpoint = (): JSX.Element => {
-  const breakpoint = useBreakpoint();
+  function handleAlertClick() {
+    setTimeout(() => {
+      alert(`Latest count value: ${latestCount.current}`);
+    }, 3000);
+  }
 
-  if (breakpoint === "laptopL") return <div> This is very big Laptop </div>;
-  else if (breakpoint == "laptop") return <div> This is Laptop</div>;
-  else if (breakpoint == "tablet") return <div> This is Tablet</div>;
-  else return <div> Too small!</div>;
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button className="btn btn-xs btn-outline btn-info" onClick={() => setCount(count + 1)}>Click me</button>
+      <button className="btn btn-xs btn-outline btn-error ml-2" onClick={handleAlertClick}>Show alert</button>
+    </div>
+  );
 };
 
-export default Breakpoint;
+export default Latest;

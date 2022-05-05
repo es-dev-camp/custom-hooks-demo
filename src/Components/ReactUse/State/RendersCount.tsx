@@ -1,14 +1,14 @@
-import { createBreakpoint } from "react-use";
+import { useRendersCount, useUpdate } from "react-use";
 
-const useBreakpoint = createBreakpoint();
+const RendersCount = () => {
+  const update = useUpdate();
+  const rendersCount = useRendersCount();
 
-const Breakpoint = (): JSX.Element => {
-  const breakpoint = useBreakpoint();
-
-  if (breakpoint === "laptopL") return <div> This is very big Laptop </div>;
-  else if (breakpoint == "laptop") return <div> This is Laptop</div>;
-  else if (breakpoint == "tablet") return <div> This is Tablet</div>;
-  else return <div> Too small!</div>;
+  return (
+    <div>
+      <span>Renders count: {rendersCount}</span>
+      <button className="btn btn-xs btn-block btn-outline btn-info" onClick={update}>re-render</button>
+    </div>
+  );
 };
-
-export default Breakpoint;
+export default RendersCount;

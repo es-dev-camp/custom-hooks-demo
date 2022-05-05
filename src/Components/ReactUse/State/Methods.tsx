@@ -1,14 +1,34 @@
-import { createBreakpoint } from "react-use";
+import { useMethods } from 'react-use';
 
-const useBreakpoint = createBreakpoint();
-
-const Breakpoint = (): JSX.Element => {
-  const breakpoint = useBreakpoint();
-
-  if (breakpoint === "laptopL") return <div> This is very big Laptop </div>;
-  else if (breakpoint == "laptop") return <div> This is Laptop</div>;
-  else if (breakpoint == "tablet") return <div> This is Tablet</div>;
-  else return <div> Too small!</div>;
+const initialState = {
+  count: 0,
 };
+type SampleState = typeof initialState;
 
-export default Breakpoint;
+const createMethods = (state: SampleState) => {
+  return {
+    reset() {
+      return initialState;
+    },
+    increment() {
+      return { ...state, count: state.count + 1 };
+    },
+    decrement() {
+      return { ...state, count: state.count - 1 };
+    },
+  };
+}
+
+const Methods = () => {
+  const [state, methods] = useMethods(createMethods, initialState);
+
+  return (
+    <>
+      <p>Count: {state.count}</p>
+      <button className="btn btn-xs btn-block btn-outline btn-info" onClick={methods.increment}>+</button>
+      <button className="btn btn-xs btn-block btn-outline btn-info" onClick={methods.decrement}>-</button>
+      <button className="btn btn-xs btn-block btn-outline btn-info" onClick={methods.reset}>reset</button>
+    </>
+  );
+};
+export default Methods;

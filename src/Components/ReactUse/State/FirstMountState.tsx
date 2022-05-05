@@ -1,14 +1,15 @@
-import { createBreakpoint } from "react-use";
+import { useFirstMountState, useUpdate } from 'react-use';
 
-const useBreakpoint = createBreakpoint();
+const FirstMountState = () => {
+  const isFirstMount = useFirstMountState();
+  const update = useUpdate();
 
-const Breakpoint = (): JSX.Element => {
-  const breakpoint = useBreakpoint();
-
-  if (breakpoint === "laptopL") return <div> This is very big Laptop </div>;
-  else if (breakpoint == "laptop") return <div> This is Laptop</div>;
-  else if (breakpoint == "tablet") return <div> This is Tablet</div>;
-  else return <div> Too small!</div>;
+  return (
+    <div>
+      <span>This component is just mounted: {isFirstMount ? 'YES' : 'NO'}</span>
+      <button className="btn btn-xs btn-block btn-outline btn-info" onClick={update}>re-render</button>
+    </div>
+  );
 };
 
-export default Breakpoint;
+export default FirstMountState;

@@ -1,14 +1,16 @@
-import { createBreakpoint } from "react-use";
+import { useToggle } from 'react-use';
 
-const useBreakpoint = createBreakpoint();
+const Toggle = () => {
+  const [on, toggle] = useToggle(true);
 
-const Breakpoint = (): JSX.Element => {
-  const breakpoint = useBreakpoint();
-
-  if (breakpoint === "laptopL") return <div> This is very big Laptop </div>;
-  else if (breakpoint == "laptop") return <div> This is Laptop</div>;
-  else if (breakpoint == "tablet") return <div> This is Tablet</div>;
-  else return <div> Too small!</div>;
+  return (
+    <div>
+      <div>{on ? 'ON' : 'OFF'}</div>
+      <button className="btn btn-xs btn-block btn-outline btn-info" onClick={toggle}>Toggle</button>
+      <button className="btn btn-xs btn-block btn-outline btn-info" onClick={() => toggle(true)}>set ON</button>
+      <button className="btn btn-xs btn-block btn-outline btn-info" onClick={() => toggle(false)}>set OFF</button>
+    </div>
+  );
 };
 
-export default Breakpoint;
+export default Toggle;

@@ -1,14 +1,18 @@
-import { createBreakpoint } from "react-use";
+import { useObservable } from 'react-use';
+import { BehaviorSubject } from 'rxjs';
 
-const useBreakpoint = createBreakpoint();
+const counter$ = new BehaviorSubject(0);
+const Observable = () => {
+  const value = useObservable(counter$, 0);
 
-const Breakpoint = (): JSX.Element => {
-  const breakpoint = useBreakpoint();
-
-  if (breakpoint === "laptopL") return <div> This is very big Laptop </div>;
-  else if (breakpoint == "laptop") return <div> This is Laptop</div>;
-  else if (breakpoint == "tablet") return <div> This is Tablet</div>;
-  else return <div> Too small!</div>;
+  return (
+    <button
+      className="btn btn-xs btn-outline btn-info"
+      onClick={() => counter$.next(value + 1)}
+    >
+      Clicked {value} times
+    </button>
+  );
 };
 
-export default Breakpoint;
+export default Observable;
